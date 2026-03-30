@@ -17,11 +17,6 @@ namespace AutomationProjectTest.BusinessLayer.PageObjects
         public void EnterPassword(string password) => TypeText(PasswordInput, password);
         public void ClickLoginButton() => Click(LoginButton);
         
-        //Robust clear input
-        
-        public void ClearUsername() => ClearRobust(UsernameInput);
-        public void ClearPassword() => ClearRobust(PasswordInput);
-        
         //Manual clear input
         public void ClearUsernameManually() => ClearByTyping(UsernameInput);
         public void ClearPasswordManually() => ClearByTyping(PasswordInput);
@@ -55,20 +50,6 @@ namespace AutomationProjectTest.BusinessLayer.PageObjects
         }
         
         public string WaitAndGetErrorMessage() => Text(ErrorMessageContainer);
-
-        private void ClearRobust(By locator)
-        {
-            var element = Visible(locator);
-            element.Clear();
-
-            // JS fallback if the input is still not empty
-            if (!string.IsNullOrEmpty(element.GetAttribute("value")))
-            {
-                ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].value = '';", element);
-            }
-
-            Until(d => string.IsNullOrEmpty(d.FindElement(locator).GetAttribute("value") ?? ""));
-        }
         
         private void ClearByTyping(By locator)
         {

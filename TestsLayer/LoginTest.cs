@@ -28,8 +28,6 @@ namespace AutomationProjectTest.TestsLayer
             loginPage.EnterUsername((string)Credentials.InvalidUsername[0][1]);
             loginPage.EnterPassword(Credentials.Password);
             loginPage.ClearCredentialsManually();
-            loginPage.ClearUsername();
-            loginPage.ClearPassword();
             
             loginPage.WaitUntilCredentialsAreEmpty();
             
@@ -48,7 +46,6 @@ namespace AutomationProjectTest.TestsLayer
             loginPage.EnterUsername(Credentials.AcceptedUsernames[0]);
             loginPage.EnterPassword(Credentials.Password);
             loginPage.ClearPasswordManually();
-            loginPage.ClearPassword();
             
             loginPage.ClickLoginButton();
             loginPage.WaitAndGetErrorMessage().Should().Contain("Password is required");
