@@ -37,19 +37,19 @@ namespace AutomationProjectTest.CoreLayer
             }
             catch (Exception ex)
             {
-                // log ex if you have logger
+                // Empty
             }
             finally
             {
                 try { Driver.Quit(); } 
                 catch 
                 {
-                    //No need to log quit failures, we're already in cleanup and will dispose anyway
+                    //No need to log quit failures, it is already in cleanup and will dispose anyway
                 }
                 try { Driver.Dispose(); } 
                 catch 
                 {
-                    //No need to log dispose failures, we're already in cleanup and will dispose anyway
+                    //No need to log dispose failures, it is in cleanup and will dispose anyway
                 }
                 Driver = null;
             }
